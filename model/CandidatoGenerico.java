@@ -1,9 +1,11 @@
 package model;
 import java.awt.Image;
 
+import javax.swing.Icon;
+
 public class CandidatoGenerico extends Candidato {
 
-    public CandidatoGenerico(String nome, String imagem) {
-        super(nome, imagem);
+    public CandidatoGenerico(String nome, Icon string) {
+        super(nome, string);
     }
 }

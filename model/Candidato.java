@@ -10,14 +10,16 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import javax.swing.Icon;
+
 public abstract class Candidato {
     private String nome;
-    private String imagem;
+    private Icon imagem;
     private int votos;
 
     private static final String NOME_ARQUIVO = "votos.txt";
 
-    public Candidato(String nome, String imagem) {
+    public Candidato(String nome, Icon imagem) {
         this.nome = nome;
         this.imagem = imagem;
         this.votos = 0;
@@ -27,7 +29,7 @@ public abstract class Candidato {
         return nome;
     }
 
-    public String getImagem() {
+    public Icon getImagem() {
         return imagem;
     }
 
