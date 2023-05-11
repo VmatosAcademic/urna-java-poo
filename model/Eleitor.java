@@ -7,6 +7,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+
+
 import java.io.FileNotFoundException;
 import java.io.File;
 
@@ -16,20 +19,25 @@ public class Eleitor {
     private String cpf;
     private String hashEleitor;
 
-    public Eleitor(String cpf) {
+    public Eleitor() {
+        
+    }
+
+    public boolean cadastrarEleitor(String cpf){
         try{
             if (cpfJaCadastrado(cpf)) {
                 System.out.println("CFP já cadastrado");
+                return false;
             }else{
             this.cpf = cpf;
             this.hashEleitor = gerarHashAleatoria();
             salvarHashEmArquivo();
+            return true;
             }
         }catch(Exception e){
             System.out.println("CPF já cadastrado");
+            return false;
         }
-
-        
     }
 
     public String getCpf() {
