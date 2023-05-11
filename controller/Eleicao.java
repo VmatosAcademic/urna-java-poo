@@ -55,10 +55,10 @@ public class Eleicao {
         Eleicao eleicao = new Eleicao();
 
         // Adiciona alguns candidatos
-        Candidato candidato1 = new CandidatoGenerico("João", "imagem.jpg");
-        Candidato candidato2 = new CandidatoGenerico("Maria", "imagem.jpg");
-        eleicao.adicionarCandidato(candidato1);
-        eleicao.adicionarCandidato(candidato2);
+        // Candidato candidato1 = new CandidatoGenerico("João", "imagem.jpg");
+        // Candidato candidato2 = new CandidatoGenerico("Maria", "imagem.jpg");
+        // eleicao.adicionarCandidato(candidato1);
+        // eleicao.adicionarCandidato(candidato2);
 
         Candidato candidato = eleicao.getCandidato("Maria"); // retorna um candidato pelo nome
         candidato.votar();
