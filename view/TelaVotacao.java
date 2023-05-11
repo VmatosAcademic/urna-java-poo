@@ -77,9 +77,18 @@ public class TelaVotacao extends JFrame {
         JButton botaoResultado = new JButton("Resultado");
         botaoResultado.addActionListener(e -> exibirResultado());
 
+        //BOTAO PARA NOVO VOTO
+        JButton botaoNovoVoto = new JButton("Nova Votacao");
+        botaoNovoVoto.addActionListener(e -> {
+            dispose();
+            TelaValidacao telaValidacao = new TelaValidacao();
+        });
+
+
         // Cria um painel para o botão de resultado
         JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.CENTER));
         painelBotoes.add(botaoResultado);
+        painelBotoes.add(botaoNovoVoto);
 
         // Adiciona os painéis à janela
         add(painelCandidatos, BorderLayout.CENTER);
@@ -109,5 +118,6 @@ public class TelaVotacao extends JFrame {
 
     public static void main(String[] args) {
         new TelaVotacao().setVisible(true);
+        
     }
 }
