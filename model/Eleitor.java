@@ -48,11 +48,27 @@ public class Eleitor {
         return hashEleitor;
     }
 
-    private String gerarHashAleatoria() {
+    public String gerarHashAleatoria() {
         String hash = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hashBytes = md.digest(cpf.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02X", b));
+            }
+            hash = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("Erro ao gerar hash: " + e.getMessage());
+        }
+        return hash;
+    }
+
+    public String gerarHashSenha(String senha) {
+        String hash = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = md.digest(senha.getBytes());
             StringBuilder sb = new StringBuilder();
             for (byte b : hashBytes) {
                 sb.append(String.format("%02X", b));

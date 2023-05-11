@@ -44,6 +44,13 @@ public class Eleicao {
         }
     }
 
+    public void exibirResultado() {
+        
+        for (Candidato candidato : candidatos) {
+            System.out.println(candidato.getNome() + ": " + candidato.getVotos());
+        }
+    }
+
     public static void main(String[] args) {
         Eleicao eleicao = new Eleicao();
 
@@ -53,17 +60,13 @@ public class Eleicao {
         eleicao.adicionarCandidato(candidato1);
         eleicao.adicionarCandidato(candidato2);
 
-        Candidato candidato = eleicao.getCandidato("Maria"); // Supondo que existe um método getCandidato que retorna um candidato pelo nome
+        Candidato candidato = eleicao.getCandidato("Maria"); // retorna um candidato pelo nome
         candidato.votar();
     
 
         // Contabiliza os votos
-        eleicao.contabilizarVotos();
-
         // Exibe a quantidade de votos para cada candidato
-        for (Candidato candidatoVotos : eleicao.getCandidatos()) {
-            System.out.println(candidatoVotos.getNome() + ": " + candidatoVotos.getVotos());
-        }
+        eleicao.exibirResultado();
     }
 
 }
