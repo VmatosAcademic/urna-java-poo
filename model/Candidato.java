@@ -84,9 +84,9 @@ public abstract class Candidato {
         try {
             // Cria um objeto BufferedReader para ler os votos do arquivo
             BufferedReader reader = new BufferedReader(new FileReader(NOME_ARQUIVO));
-
             // Lê cada linha do arquivo e verifica se a hash corresponde ao candidato
             String linha;
+            votos = 0;
             while ((linha = reader.readLine()) != null) {
                 if (linha.equals(gerarHash(nome + imagem.toString()))) {
                     votos++;
