@@ -1,7 +1,5 @@
 package controller;
 
-import java.io.FileNotFoundException;
-
 import view.TelaVotacao;
 
 public class Controller {
@@ -15,10 +13,11 @@ public class Controller {
         // TelaVotacao telaVotacao = new TelaVotacao();
         //TODO: verificar hash da pagina de candidato
         //TODO: verificar hash da pagina de votos
-        //new CriaHashDoArquivo().criaHashDoArquivo("candidatos.txt"); //Descomente para adicionar um hash ao arquivo
+        new CriaHashDoArquivo().criaHashDoArquivo("candidatos.txt");
+        new VerificarIntegridade().verificarIntegridade("candidatos.txt");
+        new CriaHashDoArquivo().criaHashDoArquivo("votos.txt");
+        new VerificarIntegridade().verificarIntegridade("votos.txt");
         eleicao = new Eleicao();
-        System.out.println("Criando candidatos");
-        // definirCandidatos.criarCandidatos(eleicao);
         new TelaVotacao().setVisible(true);
     
 
