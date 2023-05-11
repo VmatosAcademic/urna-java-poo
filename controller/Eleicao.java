@@ -11,6 +11,7 @@ import java.util.List;
 
 import model.Candidato;
 import model.CandidatoGenerico;
+import view.TelaVotoConcluido;
 
 
 public class Eleicao {
@@ -49,6 +50,12 @@ public class Eleicao {
         for (Candidato candidato : candidatos) {
             System.out.println(candidato.getNome() + ": " + candidato.getVotos());
         }
+    }
+
+    public void votar(Candidato candidato) {
+        candidato.votar();
+        System.out.println("Voto computado para " + candidato.getNome());
+        
     }
 
     public void iniciar(String[] args) {

@@ -31,7 +31,7 @@ import model.Candidato;
 import model.CandidatoGenerico;
 
 public class TelaVotacao extends JFrame {
-
+    int linhas = 0;
     private static final long serialVersionUID = 1L;
 
     private Eleicao eleicao;
@@ -40,6 +40,7 @@ public class TelaVotacao extends JFrame {
 
     public TelaVotacao() throws FileNotFoundException {
         eleicao = new Eleicao();
+        contarLinhas();
         criarCandidatos();
         criarInterface(eleicao);
     }
@@ -47,7 +48,7 @@ public class TelaVotacao extends JFrame {
     private void criarCandidatos() throws FileNotFoundException{
         // Cria e adiciona os candidatos à eleição
             Scanner scanner = new Scanner(new File("candidatos.txt"));
-            while (scanner.hasNextLine()) {
+            for(int i = 0; i < linhas-1; i++) {
                 String linha = scanner.nextLine();
                 String[] partes = linha.split(":");
                 String nome = partes[0].trim();
@@ -63,6 +64,17 @@ public class TelaVotacao extends JFrame {
         // eleicao.adicionarCandidato(c1);
         // eleicao.adicionarCandidato(c2);
         // eleicao.adicionarCandidato(c3);
+    }
+
+    public void contarLinhas() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("candidatos.txt"));
+        
+        while (scanner.hasNextLine()) {
+            linhas++;
+            scanner.nextLine();
+        }
+        scanner.close();
+        System.out.println("Linhas: " + linhas);
     }
 
     public void criarInterface(Eleicao eleicao) {
@@ -113,15 +125,14 @@ public class TelaVotacao extends JFrame {
 
     private void contabilizarVoto(Candidato candidato) {
         
-        candidato.votar();
+        eleicao.votar(candidato);
         atualizarLabelsCandidatos();
     }
 
 
     private void atualizarLabelsCandidatos() {
-        // for (JLabel label : labelsCandidatos) {
-        //     label.setText(label.getText().split(":")[0] + ": " + eleicao.getVotos(label.getText().split(":")[0]));
-        // }
+        TelaVotacao.this.setVisible(false);
+        new TelaVotoConcluido();
     }
 
     private void exibirResultado() {
