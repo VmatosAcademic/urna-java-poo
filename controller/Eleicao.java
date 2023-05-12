@@ -54,8 +54,6 @@ public class Eleicao {
 
     public void votar(Candidato candidato) {
         candidato.votar();
-        System.out.println("Voto computado para " + candidato.getNome());
-        
     }
 
     public void iniciar(String[] args) {

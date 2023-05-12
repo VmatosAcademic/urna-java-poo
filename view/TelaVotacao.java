@@ -31,7 +31,7 @@ import model.Candidato;
 import model.CandidatoGenerico;
 
 public class TelaVotacao extends JFrame {
-    int linhas = 0;
+
     private static final long serialVersionUID = 1L;
 
     private Eleicao eleicao;
@@ -40,7 +40,6 @@ public class TelaVotacao extends JFrame {
 
     public TelaVotacao() throws FileNotFoundException {
         eleicao = new Eleicao();
-        contarLinhas();
         criarCandidatos();
         criarInterface(eleicao);
     }
@@ -48,7 +47,7 @@ public class TelaVotacao extends JFrame {
     private void criarCandidatos() throws FileNotFoundException{
         // Cria e adiciona os candidatos à eleição
             Scanner scanner = new Scanner(new File("candidatos.txt"));
-            for(int i = 0; i < linhas-1; i++) {
+            while (scanner.hasNextLine()) {
                 String linha = scanner.nextLine();
                 String[] partes = linha.split(":");
                 String nome = partes[0].trim();
@@ -66,31 +65,16 @@ public class TelaVotacao extends JFrame {
         // eleicao.adicionarCandidato(c3);
     }
 
-    public void contarLinhas() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("candidatos.txt"));
-        
-        while (scanner.hasNextLine()) {
-            linhas++;
-            scanner.nextLine();
-        }
-        scanner.close();
-        System.out.println("Linhas: " + linhas);
-    }
 
     public void criarInterface(Eleicao eleicao) {
-        
-        System.out.println("Criando interface");
         setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Eleição");
-
-        System.out.println(eleicao.getCandidatos().size());
 
         // Cria um painel para os candidatos
         JPanel painelCandidatos = new JPanel(new GridLayout(3, 1, 10, 10));
         labelsCandidatos = new ArrayList<>();
         for (Candidato candidato : eleicao.getCandidatos()) {
-            System.out.println("Criando candidato " + candidato.getNome()+" "+candidato.getImagem());
             JLabel label = new JLabel(candidato.getNome(), candidato.getImagem(), SwingConstants.CENTER);
             label.setPreferredSize(new Dimension(400, 400));
             // label.setHorizontalAlignment(JLabel.CENTER);
@@ -120,7 +104,6 @@ public class TelaVotacao extends JFrame {
 
         // Ajusta o tamanho da janela
         pack();
-        System.out.println("Interface criada");
     }
 
     private void contabilizarVoto(Candidato candidato) {

@@ -1,0 +1,2 @@
+votos.txt:w7V2CoQ2zit/ZSM03bpPU6yZY/k5qhEhDMhlbVRDUQE=
+candidatos.txt:9V7F0l2ClRabtso1w5OTio+Gb/wHVEJS4pyUOlclZmc=
