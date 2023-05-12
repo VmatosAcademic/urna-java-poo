@@ -179,29 +179,41 @@ public class Eleitor {
         }
     }
     
-    public static boolean validarVotosHash(String hash) {
+    public static boolean validarHash(String hash) {
+        File file = new File("hashesVotados.txt");
+        boolean hashExiste = false;
+
         try {
-            File votosFile = new File("hashesVotados.txt");
-            if (!votosFile.exists()) {
-                votosFile.createNewFile();
-            }
-    
-            BufferedReader br = new BufferedReader(new FileReader(votosFile));
-            String hashVoto;
-            while ((hashVoto = br.readLine()) != null) {
-                if (hashVoto==hash) {
-                    System.out.println("Eleitor já votou.");
-                    br.close();
-                    return true;
+            // Verifica se o arquivo existe
+            if (!file.exists()) {
+                file.createNewFile();
+            } else {
+                // Procura pelo hash no arquivo
+                Scanner scanner = new Scanner(file);
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    if (line.equals(hash)) {
+                        hashExiste = true;
+                        break;
+                    }
                 }
+                scanner.close();
             }
-            
-            br.close();
-            return false;
+
+            // Se o hash não existe no arquivo, adiciona o hash e retorna true
+            if (!hashExiste) {
+                FileWriter writer = new FileWriter(file, true);
+                writer.write(hash + "\n");
+                writer.close();
+                return true;
+            }
+
         } catch (IOException e) {
-            System.out.println("Erro ao validar votos: " + e.getMessage());
-            return false;
+            e.printStackTrace();
         }
+
+        // Se o hash já existe no arquivo, retorna false
+        return false;
     }
-    
+
 }

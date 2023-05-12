@@ -26,6 +26,7 @@ public TelaValidacao() throws FileNotFoundException {
                 } else {
                     // Caso contrário, exibe uma mensagem de erro
                     JOptionPane.showMessageDialog(null, "Eleitor não cadastrado ou já votou!");
+                                        
                 }
             }
         
