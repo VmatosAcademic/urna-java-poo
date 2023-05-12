@@ -7,5 +7,6 @@ public class Teste {
         Urna urna = new Urna();
         //urna.validarEleitor("03143551542");
         System.out.println(urna.validarEleitor("03143551542"));
+        //eleitor.cadastrarEleitor("982838746661");
     }
 }

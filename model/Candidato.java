@@ -12,6 +12,9 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.swing.Icon;
 
+import view.TelaVotacao;
+import view.TelaVotoConcluido;
+
 public abstract class Candidato {
     private String nome;
     private Icon imagem;

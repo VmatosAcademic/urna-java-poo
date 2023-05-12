@@ -34,15 +34,30 @@ public class Urna {
             System.out.println("CPF não cadastrado.");
             return false;
         }
-        String senha = JOptionPane.showInputDialog(null, "Insira o cpf do eleitor:");
-        String hashSenha = eleitor.gerarHashSenha(senha);
-        if (hashEleitor.equals(hashSenha)) {
-            System.out.println("Eleitor validado.");
-            return true;
+        String senha = cpf;
+        //String senha = JOptionPane.showInputDialog(null, "Insira o cpf do eleitor:");
+        String hashCpf = eleitor.gerarHashSenha(senha);
+        String hashSenha = eleitor.gerarHashSenha(hashCpf);
+        if (hashEleitor.equals(hashCpf)) {
+            
+            if(Eleitor.validarVotos(hashEleitor) == true){  
+                System.out.println("Eleitor validado.");
+                System.out.println(Eleitor.validarVotosHash(hashSenha));
+                System.out.println("novo hash: "+ hashSenha);
+                return true;
+            }else{
+                System.out.println("Eleitor já votou");
+                return false;
+            }                 
         } else {
             System.out.println("Eleitor não cadastrado.");
             return false;
         }
+    }
+
+    public boolean testarVulnerabilidades(){
+
+        return false;
     }
 }
 

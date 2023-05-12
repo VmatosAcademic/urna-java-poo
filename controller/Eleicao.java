@@ -11,6 +11,7 @@ import java.util.List;
 
 import model.Candidato;
 import model.CandidatoGenerico;
+import view.TelaVotoConcluido;
 
 
 public class Eleicao {
@@ -51,7 +52,13 @@ public class Eleicao {
         }
     }
 
-    public static void main(String[] args) {
+    public void votar(Candidato candidato) {
+        candidato.votar();
+        System.out.println("Voto computado para " + candidato.getNome());
+        
+    }
+
+    public void iniciar(String[] args) {
         Eleicao eleicao = new Eleicao();
 
         // Adiciona alguns candidatos
@@ -60,13 +67,13 @@ public class Eleicao {
         // eleicao.adicionarCandidato(candidato1);
         // eleicao.adicionarCandidato(candidato2);
 
-        Candidato candidato = eleicao.getCandidato("Maria"); // retorna um candidato pelo nome
-        candidato.votar();
+        // Candidato candidato = eleicao.getCandidato("Maria"); // retorna um candidato pelo nome
+        // candidato.votar();
     
 
         // Contabiliza os votos
         // Exibe a quantidade de votos para cada candidato
-        eleicao.exibirResultado();
+        // eleicao.exibirResultado();
     }
 
 }

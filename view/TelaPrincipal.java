@@ -34,9 +34,9 @@ public class TelaPrincipal extends JFrame {
                 }                
         }});
 
-        JMenuItem listarEleitoresMenuItem = new JMenuItem("Listar Eleitores");
-        eleitoresMenu.add(listarEleitoresMenuItem);
-        listarEleitoresMenuItem.addActionListener(e -> listarEleitores());
+        //JMenuItem listarEleitoresMenuItem = new JMenuItem("Listar Eleitores");
+        //eleitoresMenu.add(listarEleitoresMenuItem);
+        //listarEleitoresMenuItem.addActionListener(e -> listarEleitores());
 
         setSize(400, 300);
         setLocationRelativeTo(null);

@@ -1,4 +1,5 @@
 package model;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.File;
 
 
@@ -18,6 +20,7 @@ import java.io.File;
 public class Eleitor {
     private String cpf;
     private String hashEleitor;
+    
 
     public Eleitor() {
         
@@ -32,6 +35,7 @@ public class Eleitor {
             this.cpf = cpf;
             this.hashEleitor = gerarHashAleatoria();
             salvarHashEmArquivo();
+            
             return true;
             }
         }catch(Exception e){
@@ -39,6 +43,46 @@ public class Eleitor {
             return false;
         }
     }
+
+    public static boolean hashJavotada(String hash) {
+        Map<String, String> hashEleitores = carregarHashesDeHashes();
+        return hashEleitores.containsKey(hash);
+    }
+
+    public static Map<String, String> carregarHashesDeHashes() {
+        Map<String, String> hashEleitores = new HashMap<>();
+        try {
+            Scanner scanner = new Scanner(new File("hashesVotados.txt"));
+            while (scanner.hasNextLine()) {
+                String[] linha = scanner.nextLine().split(":");
+                hashEleitores.put(linha[0], linha[1]);
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo hashesEleitores.txt não encontrado.");
+        }
+        return hashEleitores;
+    }
+
+    public boolean jaVotou(String hashCpf){
+        try{
+            if (hashJavotada(hashCpf)) {
+                System.out.println("ja votou");
+                return false;
+            }else{
+            
+            this.hashEleitor = gerarHashAleatoria();
+            salvarHashEmArquivo();
+            
+            return true;
+            }
+        }catch(Exception e){
+            System.out.println("CPF já cadastrado");
+            return false;
+        } 
+    }
+  
+    
 
     public String getCpf() {
         return cpf;
@@ -111,4 +155,53 @@ public class Eleitor {
         return hashEleitores.containsKey(cpf);
 
     }
+    public static boolean validarVotos(String hash) {
+        try {
+            File votosFile = new File("votos.txt");
+            if (!votosFile.exists()) {
+                votosFile.createNewFile();
+            }
+    
+            BufferedReader br = new BufferedReader(new FileReader(votosFile));
+            String hashVoto;
+            while ((hashVoto = br.readLine()) != null) {
+                if (hashVoto==hash) {
+                    System.out.println("Eleitor já votou.");
+                    br.close();
+                    return false;
+                }
+            }
+            br.close();
+            return true;
+        } catch (IOException e) {
+            System.out.println("Erro ao validar votos: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public static boolean validarVotosHash(String hash) {
+        try {
+            File votosFile = new File("hashesVotados.txt");
+            if (!votosFile.exists()) {
+                votosFile.createNewFile();
+            }
+    
+            BufferedReader br = new BufferedReader(new FileReader(votosFile));
+            String hashVoto;
+            while ((hashVoto = br.readLine()) != null) {
+                if (hashVoto==hash) {
+                    System.out.println("Eleitor já votou.");
+                    br.close();
+                    return true;
+                }
+            }
+            
+            br.close();
+            return false;
+        } catch (IOException e) {
+            System.out.println("Erro ao validar votos: " + e.getMessage());
+            return false;
+        }
+    }
+    
 }
