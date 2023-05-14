@@ -21,6 +21,8 @@ public class Controller {
         new VerificarIntegridade().verificarIntegridade("candidatos.txt");
         new CriaHashDoArquivo().criaHashDoArquivo("votos.txt");
         new VerificarIntegridade().verificarIntegridade("votos.txt");
+        new CriaHashDoArquivo().criaHashDoArquivo("hashesEleitores.txt");
+        new VerificarIntegridade().verificarIntegridade("hashesEleitores.txt");
         eleicao = new Eleicao();
         new TelaLogin();
         // new TelaPrincipal();

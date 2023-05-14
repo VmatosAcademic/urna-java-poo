@@ -1,3 +1,5 @@
 
 candidatos.txt:9V7F0l2ClRabtso1w5OTio+Gb/wHVEJS4pyUOlclZmc=
 votos.txt:4xUxW/kewSyhrmFqFJBTvAI1u7/9kJ5Jvh3l+II2fWk=
+
+hashesEleitores.txt:pXw+aMLIWxHtM8EfnelyyM6sf2T+hc/FLUCseqxHb0U=

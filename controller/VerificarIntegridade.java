@@ -7,6 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class VerificarIntegridade {
     String hashArquivo = "";
     String hashValidador = "";
@@ -21,6 +23,8 @@ public class VerificarIntegridade {
             System.out.println("Arquivo íntegro");
         } else {
             System.out.println("Arquivo corrompido"+arquivo);
+            JOptionPane.showMessageDialog(null, "Erro de integridade no arquivo "+ arquivo, "Erro", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
         }
     }
 
