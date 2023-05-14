@@ -19,7 +19,7 @@ public TelaValidacao() throws FileNotFoundException {
                 Urna urna = new Urna();
                 if (urna.validarEleitor(cpf)) {
                     // Se o eleitor for validado com sucesso, exibe a tela de votação
-                    TelaVotacao votacaoUI = new TelaVotacao();
+                    TelaVotacao votacaoUI = new TelaVotacao(cpf);
                     votacaoUI.setVisible(true);
                     dispose();
                     

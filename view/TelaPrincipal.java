@@ -1,11 +1,10 @@
 package view;
 
 import model.Eleitor;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+
+import java.io.*;
+import java.awt.*;
+import javax.swing.*;
 
 
 
@@ -34,6 +33,19 @@ public class TelaPrincipal extends JFrame {
                 }                
         }});
 
+        JButton botaoNovoVoto = new JButton("Novo voto");
+        botaoNovoVoto.addActionListener(e -> {
+            try {
+                dispose();
+                TelaValidacao validacaoUI = new TelaValidacao();
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        painelBotoes.add(botaoNovoVoto);
+        add(painelBotoes, BorderLayout.SOUTH);
         //JMenuItem listarEleitoresMenuItem = new JMenuItem("Listar Eleitores");
         //eleitoresMenu.add(listarEleitoresMenuItem);
         //listarEleitoresMenuItem.addActionListener(e -> listarEleitores());

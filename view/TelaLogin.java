@@ -51,9 +51,10 @@ public class TelaLogin extends JFrame {
                 if (usuario.equals("mesario") && String.valueOf(senha).equals("123456")) {
                     // Cria e exibe a nova interface
                 
-                    JOptionPane.showMessageDialog(null, "Bem-vindo, mesário!");
-                    TelaPrincipal telaPrincipal = new TelaPrincipal();
-                    telaPrincipal.setVisible(true);
+                    // JOptionPane.showMessageDialog(null, "Bem-vindo, mesário!");
+                    setVisible(false);
+                    new TelaPrincipal();
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.");
                 }
@@ -71,8 +72,8 @@ public class TelaLogin extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new TelaLogin();
-    }
+    // public static void main(String[] args) {
+    //     new TelaLogin();
+    // }
 }
 

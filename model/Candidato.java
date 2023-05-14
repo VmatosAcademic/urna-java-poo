@@ -93,7 +93,7 @@ public abstract class Candidato {
             String linha;
             votos = 0;
             while ((linha = reader.readLine()) != null) {
-                if (linha.equals(gerarHash(nome + imagem.toString()))) {
+                if (linha.contains(nome)) {
                     votos++;
                 }
             }

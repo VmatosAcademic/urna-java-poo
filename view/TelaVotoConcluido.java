@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.Eleicao;
+
 public class TelaVotoConcluido extends JFrame {
     private static final long serialVersionUID = 1L;
 
@@ -37,6 +39,7 @@ public class TelaVotoConcluido extends JFrame {
         JButton botaoFinalizarVotacao = new JButton("Finalizar votação");
         botaoFinalizarVotacao.addActionListener(e -> {
             dispose();
+            TelaVotacao.exibirResultado();
             TelaTestarVulnerabilidades telaTestarVulnerabilidades = new TelaTestarVulnerabilidades();
             
         });

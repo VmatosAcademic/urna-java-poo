@@ -52,8 +52,10 @@ public class Eleicao {
         }
     }
 
-    public void votar(Candidato candidato) {
-        candidato.votar();
+    public void votar(String eleitor, Candidato candidato) throws Exception {
+        new SalvarVotos().votar(eleitor, candidato);
+        // candidato.votar();
+        new AtualizaHash().atualizaHash("votos.txt");
     }
 
     public void iniciar(String[] args) {

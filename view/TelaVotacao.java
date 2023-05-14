@@ -34,11 +34,13 @@ public class TelaVotacao extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    private Eleicao eleicao;
+    private static Eleicao eleicao;
 
     private List<JLabel> labelsCandidatos;
 
-    public TelaVotacao() throws FileNotFoundException {
+    String eleitor = "";
+    public TelaVotacao(String cpf) throws FileNotFoundException {
+        eleitor = cpf;
         eleicao = new Eleicao();
         criarCandidatos();
         criarInterface(eleicao);
@@ -83,7 +85,12 @@ public class TelaVotacao extends JFrame {
             label.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    contabilizarVoto(candidato);
+                    try {
+                        contabilizarVoto(candidato);
+                    } catch (Exception e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
                 }
             });
             painelCandidatos.add(label);
@@ -106,9 +113,9 @@ public class TelaVotacao extends JFrame {
         pack();
     }
 
-    private void contabilizarVoto(Candidato candidato) {
+    private void contabilizarVoto(Candidato candidato) throws Exception {
         
-        eleicao.votar(candidato);
+        eleicao.votar(eleitor, candidato);
         atualizarLabelsCandidatos();
     }
 
@@ -118,12 +125,12 @@ public class TelaVotacao extends JFrame {
         new TelaVotoConcluido();
     }
 
-    private void exibirResultado() {
+    static void exibirResultado() {
         eleicao.contabilizarVotos();
         eleicao.exibirResultado();
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        new TelaVotacao().setVisible(true);
-    }
+    // public static void main(String[] args) throws FileNotFoundException {
+    //     new TelaVotacao().setVisible(true);
+    // }
 }
