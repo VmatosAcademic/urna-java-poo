@@ -27,6 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import controller.Eleicao;
+import controller.VerificarIntegridade;
 import model.Candidato;
 import model.CandidatoGenerico;
 
@@ -86,6 +87,7 @@ public class TelaVotacao extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     try {
+                        new VerificarIntegridade().verificarIntegridade("votos.txt");
                         contabilizarVoto(candidato);
                     } catch (Exception e1) {
                         // TODO Auto-generated catch block

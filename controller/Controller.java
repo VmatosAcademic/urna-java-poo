@@ -1,5 +1,6 @@
 package controller;
 
+import view.Resultado;
 import view.TelaLogin;
 import view.TelaPrincipal;
 import view.TelaValidacao;
